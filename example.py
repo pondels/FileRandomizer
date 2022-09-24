@@ -1,8 +1,7 @@
-from random import Random
 from fileRandomizer import RandomizeFiles
 
 RF = RandomizeFiles()
-directory = 'exampleSkinFolder'
+directory = './exampleSkinFolder'
 
 # Creating a dataset to use for the PNG's
 include = '.png'
