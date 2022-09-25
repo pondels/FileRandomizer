@@ -1,4 +1,4 @@
-# Osu Skin Randomizer
+# File Randomizer
 
 An executable that randomizes files in a directory
 
