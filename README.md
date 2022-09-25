@@ -23,7 +23,7 @@ For osu! it can look something like this...
 <img src="imageExamples\osuExampleOne.png" width="350">
 <img src="imageExamples\osuExampleTwo.png" width="350">
 
-One thing to note is that this isn't specific to OSU! despite the name of this repository. The only reason for that was because it was built in the intent for OSU! files, yet still technically works for other games. You can utilize this for other games such as Geometry Dash and minecraft, but you get... interesting results.
+One thing to note is that this isn't specific to OSU!. The only reason for that was because it was built in the intent for OSU! files, yet still technically works for other games. You can utilize this for other games such as Geometry Dash and Minecraft, but you get... interesting results, however, isn't that the point?
 
 <img src="imageExamples\geometryDashExample.png" width="350">
 <img src="imageExamples\minecraftExample.png" width="350">
