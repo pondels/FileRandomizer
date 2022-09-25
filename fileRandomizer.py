@@ -24,10 +24,34 @@ class RandomizeFiles():
         dir2, fn2 = second
 
         if dir1 not in self.current_directory and dir2 not in self.current_directory:
-            print(self.current_directory, dir1)
             shutil.copyfile(f'{dir1}/{fn1}', f'{self.file_name}{dir2[len(self.directory):]}/{fn2}')
             shutil.copyfile(f'{dir2}/{fn2}', f'{self.file_name}{dir1[len(self.directory):]}/{fn1}')
+    
+    def __transfer(self, file):
+
+        dir, fn = file
+        shutil.copyfile(f'{dir}/{fn}', f'{self.file_name}{dir[len(self.directory):]}/{fn}')
+    
     # ------------------------------------------------------------------------------#
+    def list_file_types(self, directory = ''):
+        
+        if directory == '':
+            print('PLEASE GIVE A DIRECTORY')
+            return
+
+        file_types = {'TOTAL': 0}
+
+        for _, _, files in os.walk(directory):
+
+            # Create an array containing the root and files within that root directory
+            for file in files:
+                file_type = file.split('.')
+                if file_type[-1] not in file_types: file_types[file_type[-1]] = 1
+                else: file_types[file_type[-1]] += 1
+                file_types['TOTAL'] += 1
+
+        return file_types
+    
     def copy_folders(self, file_name):
         '''
             Creates a folder in your working directory that copies
@@ -137,4 +161,32 @@ class RandomizeFiles():
                 
             self.__swap_files((first[0], file1), (second[0], file2))
 
-        print("Swapping Done: KEEP IN MIND, YOUR NEW SHUFFLED FOLDER IS IN THIS DIRECTORY, AND NOT IN YOUR ORIGINAL FOLDER.")
+    def transfer_file_types(self, file_type):
+        if self.information == []:
+            print('Please call the "creating_data" method before running this function!')
+            return
+    
+        if self.file_name == '':
+            print('Please call the "copy_folders" method before running this function!')
+            return
+        
+        while True:
+            
+            # Weed out the directories with no files
+            self.__remove_redundancies()
+            
+            if self.information == []: break
+
+            # Pick 2 random choices from the directories and find their index's
+            first  = random.choice(self.information)
+
+            first_index  = self.information.index(first)
+
+            # Pick a value in the array and find their index's
+            file1 = random.choice(first[1])
+
+            file_index1 = first[1].index(file1)
+
+            self.information[first_index][1].remove(first[1][file_index1])
+                
+            self.__transfer((first[0], file1))
