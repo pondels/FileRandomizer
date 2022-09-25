@@ -10,6 +10,8 @@ An executable that randomizes files in a directory
 
 - It takes a directory, preferrably that of your osu skin folder, and copies the directory into your working directory. It then takes 2 random files and pushes them into the copied directory. Vuala, randomized skin. Enjoy
 
+- The great thing about this however, is that you can choose how random you get. Sure, you can randomize everything possible, and quite possibly make your game non-working, or you can simply just randomize audio files, giving a funny atmosphere to a game you play. It's up to you on how chaotic you choose it to be.
+
 # NOTE
 
 Remember to check any other file types that don't transfer based on the "include" variable. It's possible you might be missing some metadata, and ruining the experience! :(
