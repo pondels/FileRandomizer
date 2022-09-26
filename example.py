@@ -4,14 +4,17 @@ from fileRandomizer import RandomizeFiles
 
 #%%
 
-RF = RandomizeFiles()
+directory = 'exampleSkinFolder'
+RF = RandomizeFiles(directory)
 
 #%%
 
-directory = 'exampleSkinFolder'
+RF.help()
+
+#%%
 
 # Lists all file-types and how many of those files were found
-types = RF.list_file_types(directory)
+types = RF.list_file_types()
 print(types)
 
 #%%
@@ -22,10 +25,11 @@ RF.copy_folders('randomizedExample')
 
 #%%
 
-include = ['png', 'PNG', 'wav', 'mp3', 'JPG']
+# Takes a file-type and swaps similar file-types
+include = ['.png', '.PNG', '.wav', '.mp3', '.JPG']
 for item in include:
-    RF.create_data(directory, item)
-    RF.shuffle()
+    RF.create_data(item)
+    RF.full_swap()
 
 
 #%%
@@ -33,7 +37,7 @@ for item in include:
 # Transferring Files that I don't want randomized, but still need shifted over
 include = ['.ini', '.bat']
 for item in include:
-    RF.create_data(directory, item)
+    RF.create_data(item)
     RF.transfer_file_types(item)
 
 #%%
