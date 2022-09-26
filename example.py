@@ -19,8 +19,7 @@ print(types)
 
 #%%
 
-# Setting the directory and copying over the folders
-RF.directory = directory
+# Copying over the folders of the directory
 RF.copy_folders('randomizedExample')
 
 #%%

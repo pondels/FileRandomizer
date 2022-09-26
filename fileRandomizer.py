@@ -23,6 +23,10 @@ class RandomizeFiles():
 
     def __swap_files(self, first, second):
 
+        '''
+            First / Second: (directory, filename)
+        '''
+
         dir1, fn1 = first
         dir2, fn2 = second
 
@@ -36,18 +40,23 @@ class RandomizeFiles():
         shutil.copyfile(f'{dir}/{fn}', f'{self.file_name}{dir[len(self.directory):]}/{fn}')
     
     # ------------------------------------------------------------------------------#
-    def list_file_types(self):
+    def list_file_types(self, directory=''):
 
-        file_types = {'TOTAL': 0}
+        def find_types(directory):
+            file_types = {'TOTAL': 0}
 
-        for _, _, files in os.walk(self.directory):
+            for _, _, files in os.walk(directory):
 
-            # Create an array containing the root and files within that root directory
-            for file in files:
-                file_type = file.split('.')
-                if file_type[-1] not in file_types: file_types[file_type[-1]] = 1
-                else: file_types[file_type[-1]] += 1
-                file_types['TOTAL'] += 1
+                # Create an array containing the root and files within that root directory
+                for file in files:
+                    file_type = file.split('.')
+                    if file_type[-1] not in file_types: file_types[file_type[-1]] = 1
+                    else: file_types[file_type[-1]] += 1
+                    file_types['TOTAL'] += 1
+            return file_types
+
+        if directory == '': file_types = find_types(self.directory)
+        else: file_types = find_types(directory)
 
         return file_types
     
@@ -121,6 +130,9 @@ class RandomizeFiles():
 
             Keeps the file names for any compatibility issues to not appear.
         '''
+
+        # Pick 2 random files
+
         pass
 
     def full_swap(self):
@@ -165,7 +177,8 @@ class RandomizeFiles():
 
                 # File stays where it is and isn't detected anymore
                 self.information[first_index][1].remove(first[1][file_index1])
-            
+                self.__transfer((first[0], file1))
+
             else:
                 if second_index == first_index:
 
@@ -180,7 +193,7 @@ class RandomizeFiles():
                     self.information[first_index][1].remove(first[1][file_index1])
                     self.information[second_index][1].remove(second[1][file_index2])
                 
-            self.__swap_files((first[0], file1), (second[0], file2))
+                self.__swap_files((first[0], file1), (second[0], file2))
 
     def transfer_file_types(self, file_type):
         if self.information == []:
