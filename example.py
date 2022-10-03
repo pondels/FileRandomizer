@@ -1,28 +1,17 @@
-#%%
-
 from fileRandomizer import RandomizeFiles
-
-#%%
 
 directory = 'exampleSkinFolder'
 RF = RandomizeFiles(directory)
 
-#%%
-
 RF.help()
-
-#%%
 
 # Lists all file-types and how many of those files were found
 types = RF.list_file_types()
-print(types)
-
-#%%
+print(types) 
+# >>> {'TOTAL': 511, 'png': 422, 'wav': 53, 'PNG': 24, 'ini': 7, 'mp3': 3, 'bat': 1, 'JPG': 1}
 
 # Copying over the folders of the directory
 RF.copy_folders('randomizedExample')
-
-#%%
 
 # Takes a file-type and swaps similar file-types
 include = ['.png', '.PNG', '.wav', '.mp3', '.JPG']
@@ -30,16 +19,11 @@ for item in include:
     RF.create_data(item)
     RF.full_swap()
 
-
-#%%
-
 # Transferring Files that I don't want randomized, but still need shifted over
 include = ['.ini', '.bat']
 for item in include:
     RF.create_data(item)
     RF.transfer_file_types(item)
-
-#%%
 
 # Checking to see if both files have the same total file items
 #   This ensures everything was tranferred correctly
@@ -52,5 +36,3 @@ print(f'ORIGINAL TOTAL: {types_orig["TOTAL"]} \
 # Another way of checking these values is by using this method.
 if types_copy['TOTAL'] == types_orig['TOTAL']: print('FILE LENGTHS EQUAL')
 else: print('FILE LENGTHS NOT EQUAL. POSSIBLE FILES MISSING.')
-
-#%%

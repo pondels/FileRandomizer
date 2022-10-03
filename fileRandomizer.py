@@ -118,23 +118,6 @@ class RandomizeFiles():
             vector = [root, files]
             self.information.append(vector)
 
-    def true_random(self):
-        '''
-            Instead of swapping 2 file with one another, it takes one file
-            and finds a spot for it to go, replacing the other file, but keeping
-            it from swapping and giving that second file to swap with another file.
-        
-            i.e. File1 and File2 chosen. File1 takes File2's spot.
-            File2 is now stored in the dataframe as File1
-            File2 and File3 are then chosen. File2 can now take a new place.
-
-            Keeps the file names for any compatibility issues to not appear.
-        '''
-
-        # Pick 2 random files
-
-        pass
-
     def full_swap(self):
 
         '''
@@ -243,3 +226,10 @@ class RandomizeFiles():
         '\n     - full_swap:           Takes 2 files from the directory, swaps them, keeps the original names, and continues til finished.'
         '\n     - true_random:         A different method of "random" than full_swap. (Not yet implemented)'
         '\n     - transfer_file_types: Transfers file types that you don\'t want randomized, but easily transferred.')
+
+    # TODO
+    '''
+        Other forms of randomizing files
+            - Single file replacement
+            - Categorizing. i.e., Backgrounds with background, tilesets with tilesets, etc..
+    '''
